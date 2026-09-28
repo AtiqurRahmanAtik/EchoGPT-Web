@@ -53,7 +53,7 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-3 md:flex">
           <Link
-            href="/app"
+            href="/dashboard"
             className="px-4 py-2 text-sm font-medium text-slate-300 transition hover:text-white"
           >
             Open App
