@@ -4,6 +4,7 @@ import { X, Sparkles, Plus, Settings, CircleHelp } from "lucide-react";
 import ModelSelector from "./ModelSelector";
 import ConversationHistory from "./ConversationHistory";
 import type { AIModel, Conversation } from "@/types/chat";
+import Link from "next/link";
 
 interface ChatSidebarProps {
   isOpen: boolean;
@@ -46,7 +47,7 @@ export default function ChatSidebar({
         }`}
       >
         <div className="mb-8 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
+          <Link href={"/"} className="flex items-center gap-2.5">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600">
               <Sparkles size={19} className="text-white" />
             </div>
@@ -54,7 +55,7 @@ export default function ChatSidebar({
             <span className="text-lg font-bold tracking-tight text-white">
               Echo<span className="text-violet-400">GPT</span>
             </span>
-          </div>
+          </Link>
 
           <button
             onClick={onClose}
