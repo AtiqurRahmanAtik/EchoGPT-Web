@@ -1,10 +1,12 @@
 import Link from "next/link";
-import {
-  Sparkles,
-  Github,
-  Twitter,
-  Linkedin,
-} from "lucide-react";
+import { Sparkles } from "lucide-react";
+import { FaGithub, FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
+
+const socialLinks = [
+  { label: "GitHub", href: "https://github.com/your-username", Icon: FaGithub },
+  { label: "X (Twitter)", href: "https://x.com/your-handle", Icon: FaXTwitter },
+  { label: "LinkedIn", href: "https://linkedin.com/company/your-page", Icon: FaLinkedinIn },
+];
 
 const footerLinks = {
   Product: [
@@ -34,7 +36,6 @@ export default function Footer() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-600">
                 <Sparkles size={21} />
               </div>
-
               <span className="text-xl font-bold">
                 Echo<span className="text-violet-400">GPT</span>
               </span>
@@ -46,11 +47,13 @@ export default function Footer() {
             </p>
 
             <div className="mt-6 flex gap-3">
-              {[Github, Twitter, Linkedin].map((Icon, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  aria-label={`Social link ${index + 1}`}
+              {socialLinks.map(({ label, href, Icon }) => (
+                
+               <a   key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
                   className="rounded-lg border border-white/10 p-2.5 text-slate-400 transition hover:border-violet-500/50 hover:text-white"
                 >
                   <Icon size={18} />
@@ -61,10 +64,7 @@ export default function Footer() {
 
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h3 className="mb-5 text-sm font-semibold text-white">
-                {title}
-              </h3>
-
+              <h3 className="mb-5 text-sm font-semibold text-white">{title}</h3>
               <ul className="space-y-4">
                 {links.map((link) => (
                   <li key={link.label}>
@@ -82,10 +82,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-sm text-slate-500 sm:flex-row">
-          <p>
-            © {new Date().getFullYear()} EchoGPT. All rights reserved.
-          </p>
-
+          <p>© {new Date().getFullYear()} EchoGPT. All rights reserved.</p>
           <p>Designed for a smarter AI experience.</p>
         </div>
       </div>
