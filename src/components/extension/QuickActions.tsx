@@ -26,14 +26,14 @@ export default function QuickActions({
   onSelect,
 }: QuickActionsProps) {
   return (
-    <div>
-      <div className="mb-2 flex items-center justify-between">
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+    <div className="w-full">
+      <div className="mb-2.5 flex items-center justify-between sm:mb-3">
+        <h2 className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 sm:text-xs">
           Quick Actions
         </h2>
       </div>
 
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 gap-2 min-[340px]:grid-cols-2 sm:gap-2.5">
         {actions.map((action) => {
           const Icon =
             icons[action.id as keyof typeof icons] ?? Sparkles;
@@ -41,15 +41,18 @@ export default function QuickActions({
           return (
             <button
               key={action.id}
+              type="button"
               onClick={() => onSelect(action.prompt)}
-              className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-left text-xs text-slate-300 transition hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-white"
+              className="group flex min-h-[42px] w-full items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-left text-xs text-slate-300 transition-colors duration-200 hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0b0b14] active:bg-violet-500/15 sm:min-h-[44px] sm:px-3.5 sm:py-3"
             >
-              <Icon
-                size={15}
-                className="shrink-0 text-violet-400"
-              />
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-violet-500/10 transition-colors duration-200 group-hover:bg-violet-500/20">
+                <Icon
+                  size={14}
+                  className="text-violet-400 transition-colors duration-200 group-hover:text-violet-300 sm:h-[15px] sm:w-[15px]"
+                />
+              </span>
 
-              <span className="truncate">
+              <span className="min-w-0 truncate font-medium">
                 {action.label}
               </span>
             </button>

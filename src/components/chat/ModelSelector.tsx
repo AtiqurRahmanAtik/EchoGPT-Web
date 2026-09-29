@@ -17,17 +17,19 @@ export default function ModelSelector({
   const selectedModel = models.find((model) => model.id === value);
 
   return (
-    <div className="relative flex items-center">
+    <div className="relative flex w-full items-center">
+     
       <Sparkles
-        size={16}
-        className="absolute left-3 text-violet-400 pointer-events-none"
+        size={15}
+        className="pointer-events-none absolute left-3 z-10 shrink-0 text-violet-400 sm:h-4 sm:w-4"
       />
 
+      
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
         aria-label="Select AI model"
-        className="w-full appearance-none rounded-xl border border-white/10 bg-white/5 py-2.5 pl-9 pr-9 text-sm text-white outline-none transition hover:bg-white/10 focus:border-violet-500"
+        className="min-h-[42px] w-full cursor-pointer appearance-none rounded-xl border border-white/10 bg-white/5 py-2.5 pl-9 pr-9 text-xs text-white outline-none transition-colors duration-200 hover:border-white/15 hover:bg-white/10 focus:border-violet-500/60 focus:bg-white/[0.08] focus:ring-1 focus:ring-violet-500/30 sm:min-h-[44px] sm:text-sm"
       >
         {models.map((model) => (
           <option
@@ -40,11 +42,13 @@ export default function ModelSelector({
         ))}
       </select>
 
+     
       <ChevronDown
-        size={16}
-        className="absolute right-3 pointer-events-none text-slate-400"
+        size={15}
+        className="pointer-events-none absolute right-3 shrink-0 text-slate-400 sm:h-4 sm:w-4"
       />
 
+     
       <span className="sr-only">
         {selectedModel?.description}
       </span>

@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
+
 import "./globals.css";
+import ThemeProvider from "@/context/ThemeProvider";
+
+
 
 export const metadata: Metadata = {
-  title: "EchoGPT — One Workspace, Multiple AI Models",
+  title: "EchoGPT - AI Assistant",
   description:
-    "Experience smarter AI conversations with EchoGPT. Access multiple AI models from one powerful workspace.",
-  keywords: [
-    "EchoGPT",
-    "AI Chat",
-    "AI Models",
-    "AI Assistant",
-    "Productivity",
-  ],
+    "A modern AI assistant experience built with Next.js and Tailwind CSS.",
 };
 
 export default function RootLayout({
@@ -20,8 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html className="scroll-smooth" lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

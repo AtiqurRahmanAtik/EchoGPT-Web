@@ -1,96 +1,204 @@
-import { Check } from "lucide-react";
-import Button from "../common/Button";
+"use client";
 
-const plans = [
-  {
-    name: "Free",
-    description: "For exploring AI-powered workflows.",
-    price: "$0",
-    features: [
-      "Access to available features",
-      "Basic conversation experience",
-      "Personal productivity tools",
-    ],
-  },
-  {
-    name: "Pro Concept",
-    description: "For users who need more flexibility.",
-    price: "Coming soon",
-    features: [
-      "Extended AI workflows",
-      "Advanced productivity features",
-      "Enhanced workspace experience",
-    ],
-  },
-];
+import { Check } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import Button from "../common/Button";
+import { plans } from "@/data/pricingData";
 
 export default function Pricing() {
-  return (
-    <section id="pricing" className="section-padding">
-      <div className="container-custom">
-        <div className="mx-auto mb-12 max-w-xl text-center">
-          <p className="mb-3 text-sm font-semibold text-violet-400">
-            Pricing
-          </p>
+  const shouldReduceMotion = useReducedMotion();
 
-          <h2 className="text-3xl font-bold sm:text-4xl">
+  const fadeUp = {
+    hidden: {
+      opacity: 0,
+      y: shouldReduceMotion ? 0 : 25,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.6,
+        ease: "easeOut" as const,
+      },
+    },
+  };
+
+  const staggerContainer = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.15,
+      },
+    },
+  };
+
+  return (
+    <section
+      id="pricing"
+      className="section-padding overflow-hidden"
+    >
+      <div className="container-custom">
+        {/* Section Heading */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mx-auto mb-10 max-w-xl px-2 text-center sm:mb-12"
+        >
+          <motion.p
+            variants={fadeUp}
+            className="mb-3 text-xs font-semibold text-violet-400 sm:text-sm"
+          >
+            Pricing
+          </motion.p>
+
+          <motion.h2
+            variants={fadeUp}
+            className="text-2xl font-bold leading-tight sm:text-3xl md:text-4xl"
+          >
             Simple plans for
             <span className="gradient-text"> every workflow.</span>
-          </h2>
+          </motion.h2>
 
-          <p className="mt-4 text-sm leading-7 text-slate-400">
+          <motion.p
+            variants={fadeUp}
+            className="mt-4 text-sm leading-7 text-slate-400 sm:text-base"
+          >
             Conceptual pricing UI for the redesign assignment.
-            Actual plan availability should be confirmed with the product.
-          </p>
-        </div>
+            Actual plan availability should be confirmed with the
+            product.
+          </motion.p>
+        </motion.div>
 
-        <div className="mx-auto grid max-w-3xl gap-5 md:grid-cols-2">
+        {/* Pricing Cards */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="mx-auto grid w-full max-w-3xl grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2"
+        >
           {plans.map((plan, index) => (
-            <article
+            <motion.article
               key={plan.name}
-              className={`rounded-2xl border p-7 ${
+              variants={fadeUp}
+              whileHover={
+                shouldReduceMotion
+                  ? undefined
+                  : {
+                      y: -7,
+                      transition: {
+                        duration: 0.25,
+                      },
+                    }
+              }
+              className={`group relative overflow-hidden rounded-2xl border p-5 transition-colors duration-300 sm:p-6 md:p-7 ${
                 index === 1
-                  ? "border-violet-500/40 bg-violet-500/[0.06]"
-                  : "border-white/10 bg-white/[0.025]"
+                  ? "border-violet-500/40 bg-violet-500/[0.06] hover:border-violet-400/60"
+                  : "border-white/10 bg-white/[0.025] hover:border-violet-500/30 hover:bg-white/[0.045]"
               }`}
             >
-              <h3 className="text-lg font-semibold">
-                {plan.name}
-              </h3>
+              {/* Popular Plan Glow */}
+              {index === 1 && (
+                <div className="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-violet-500/10 blur-3xl" />
+              )}
 
-              <p className="mt-2 text-sm text-slate-400">
-                {plan.description}
-              </p>
+              <div className="relative">
+                {/* Plan Name */}
+                <h3 className="text-base font-semibold sm:text-lg">
+                  {plan.name}
+                </h3>
 
-              <div className="my-6 text-3xl font-bold">
-                {plan.price}
-              </div>
+                {/* Plan Description */}
+                <p className="mt-2 text-xs leading-6 text-slate-400 sm:text-sm">
+                  {plan.description}
+                </p>
 
-              <ul className="mb-7 space-y-4">
-                {plan.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-start gap-3 text-sm text-slate-300"
+                {/* Price */}
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    scale: shouldReduceMotion ? 1 : 0.95,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    scale: 1,
+                  }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: shouldReduceMotion ? 0 : 0.4,
+                    delay: shouldReduceMotion ? 0 : 0.2,
+                  }}
+                  className="my-5 text-2xl font-bold sm:my-6 sm:text-3xl"
+                >
+                  {plan.price}
+                </motion.div>
+
+                {/* Features */}
+                <ul className="mb-6 space-y-3 sm:mb-7 sm:space-y-4">
+                  {plan.features.map((feature, featureIndex) => (
+                    <motion.li
+                      key={feature}
+                      initial={{
+                        opacity: 0,
+                        x: shouldReduceMotion ? 0 : -10,
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        x: 0,
+                      }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: shouldReduceMotion ? 0 : 0.35,
+                        delay: shouldReduceMotion
+                          ? 0
+                          : 0.1 + featureIndex * 0.05,
+                      }}
+                      className="flex items-start gap-3 text-xs leading-6 text-slate-300 sm:text-sm"
+                    >
+                      <Check
+                        size={18}
+                        className="mt-0.5 shrink-0 text-violet-400"
+                      />
+
+                      <span>{feature}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+
+                {/* CTA */}
+                <motion.div
+                  whileHover={
+                    shouldReduceMotion
+                      ? undefined
+                      : {
+                          scale: 1.02,
+                        }
+                  }
+                  whileTap={
+                    shouldReduceMotion
+                      ? undefined
+                      : {
+                          scale: 0.98,
+                        }
+                  }
+                  transition={{ duration: 0.2 }}
+                >
+                  <Button
+                    href="/app"
+                    variant={
+                      index === 1 ? "primary" : "secondary"
+                    }
+                    className="w-full"
                   >
-                    <Check
-                      size={18}
-                      className="mt-0.5 shrink-0 text-violet-400"
-                    />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              <Button
-                href="/app"
-                variant={index === 1 ? "primary" : "secondary"}
-                className="w-full"
-              >
-                {index === 0 ? "Get Started" : "Explore"}
-              </Button>
-            </article>
+                    {index === 0 ? "Get Started" : "Explore"}
+                  </Button>
+                </motion.div>
+              </div>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

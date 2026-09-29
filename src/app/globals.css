@@ -1,5 +1,39 @@
 @import "tailwindcss";
 
+
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+}
+
+.dark {
+  --background: #07070d;
+  --foreground: #f8fafc;
+}
+
+
+
+
+
+
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+
 :root {
   --background: #08090d;
   --foreground: #f8fafc;

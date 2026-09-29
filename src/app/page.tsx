@@ -13,7 +13,10 @@ import CTA from "@/components/landing/CTA";
 export default function HomePage() {
   return (
     <>
+    <header>
+
       <Navbar />
+    </header>
 
       <main>
         <Hero />
@@ -26,7 +29,10 @@ export default function HomePage() {
         <CTA />
       </main>
 
+<footer>
+
       <Footer />
+</footer>
     </>
   );
 }

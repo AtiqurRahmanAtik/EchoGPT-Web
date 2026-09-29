@@ -1,36 +1,164 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EchoGPT
+
+A modern AI assistant UI/UX redesign built with Next.js, React, TypeScript, and Tailwind CSS.
+
+This project was created as a frontend-focused UI/UX redesign concept for an AI assistant web application and Chrome extension.
+
+---
+
+## 1. Project Overview
+
+EchoGPT is a modern AI assistant interface designed to provide a clean, focused, and responsive AI experience.
+
+The project includes:
+
+- Responsive landing page
+- AI model selection
+- AI chat dashboard
+- Conversation history
+- Chat interface
+- Chrome extension UI concept
+- Quick AI actions
+- Extension history
+- Extension settings
+- Dark/light theme support
+- Responsive design
+- Accessibility improvements
+- Framer Motion animations on selected landing-page sections
+
+> Note: This is a frontend prototype. AI responses are currently simulated and are not connected to a production AI API.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+## Follow the steps below to run the project locally.
+
+## Step 1: Clone the Repository
+
+Clone the GitHub repository:
+
+git clone YOUR_GITHUB_REPOSITORY_URL
+
+Then move into the project directory:
+
+cd echogpt
+
+## Step 2: Install Dependencies
+
+Install all required packages:
+
+npm install
+
+## Step 3: Start Development Server
+
+Run:
+
+npm run dev
+
+The application will normally be available at:
+
+http://localhost:3000
+
+Open the URL in your browser.
+
+
+## 2. Features
+
+### Landing Page
+
+The landing page includes:
+
+- Hero section
+- Features section
+- AI Models section
+- Product Preview
+- Why Choose EchoGPT
+- Pricing section
+- FAQ section
+- Call-to-action section
+- Responsive Footer
+- Responsive Navbar
+
+### AI Dashboard
+
+The dashboard includes:
+
+- AI model selector
+- New chat functionality
+- Conversation history
+- Delete conversation
+- Chat messages
+- Suggested prompts
+- Chat input
+- Loading state
+- Responsive sidebar
+- Mobile sidebar drawer
+
+### Chrome Extension Concept
+
+The extension interface includes:
+
+- AI model selector
+- Prompt input
+- Quick actions
+- AI response preview
+- Copy response
+- Conversation history
+- Delete history
+- Settings panel
+- Privacy information
+- Account information
+
+### UI/UX
+
+The project also focuses on:
+
+- Responsive layouts
+- Mobile-first design
+- Keyboard accessibility
+- Focus states
+- Touch-friendly buttons
+- Smooth transitions
+- Clean typography
+- Consistent spacing
+- Dark/light theme support
+
+---
+
+## 3. Tech Stack
+
+### Frontend
+
+- Next.js 16.3.6
+- React 19.2.8
+- TypeScript
+- Tailwind CSS 4
+
+### UI & Animation
+
+- Lucide React
+- React Icons
+- Framer Motion
+- Next Themes
+
+### Development
+
+- ESLint
+- PostCSS
+- TypeScript
+
+---
+
+## 4. Dependencies
+
+Main dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+framer-motion
+lucide-react
+next
+next-themes
+react
+react-dom
+react-icons

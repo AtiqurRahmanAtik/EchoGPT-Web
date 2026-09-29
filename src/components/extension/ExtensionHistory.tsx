@@ -20,55 +20,75 @@ export default function ExtensionHistory({
   onDelete,
 }: ExtensionHistoryProps) {
   return (
-    <div>
-      <div className="mb-2 flex items-center justify-between">
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+    <div className="w-full">
+      {/* Header */}
+      <div className="mb-2.5 flex items-center justify-between sm:mb-3">
+        <h2 className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 sm:text-xs">
           Recent History
         </h2>
 
-        <Clock3 size={14} className="text-slate-600" />
+        <Clock3
+          size={13}
+          className="shrink-0 text-slate-600 sm:h-[14px] sm:w-[14px]"
+        />
       </div>
 
+      {/* History List */}
       <div className="space-y-1">
         {history.map((item) => (
           <div
             key={item.id}
-            className="group flex items-center gap-2 rounded-xl transition hover:bg-white/5"
+            className="group flex min-w-0 items-center gap-1 rounded-xl transition-colors duration-200 hover:bg-white/5"
           >
+            {/* History Item */}
             <button
+              type="button"
               onClick={() => onSelect(item)}
-              className="flex min-w-0 flex-1 items-center gap-3 px-2.5 py-2.5 text-left"
+              className="flex min-w-0 flex-1 items-center gap-2.5 rounded-xl px-2.5 py-2.5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-violet-500 sm:gap-3 sm:px-3 sm:py-3"
             >
               <MessageSquare
-                size={15}
-                className="shrink-0 text-slate-500"
+                size={14}
+                className="shrink-0 text-slate-500 transition-colors group-hover:text-slate-400 sm:h-[15px] sm:w-[15px]"
               />
 
-              <div className="min-w-0">
-                <p className="truncate text-xs font-medium text-slate-300">
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-xs font-medium leading-5 text-slate-300">
                   {item.title}
                 </p>
 
-                <p className="truncate text-[11px] text-slate-600">
+                <p className="truncate text-[10px] leading-4 text-slate-600 sm:text-[11px]">
                   {item.preview}
                 </p>
               </div>
             </button>
 
+            {/* Delete */}
             <button
+              type="button"
               onClick={() => onDelete(item.id)}
               aria-label={`Delete ${item.title}`}
-              className="mr-2 rounded-md p-1.5 text-slate-600 opacity-0 transition hover:bg-red-500/10 hover:text-red-400 group-hover:opacity-100 focus:opacity-100"
+              className="mr-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-slate-600 opacity-100 transition-colors duration-200 hover:bg-red-500/10 hover:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 sm:mr-1.5 sm:opacity-0 sm:group-hover:opacity-100"
             >
-              <Trash2 size={13} />
+              <Trash2
+                size={12}
+                className="sm:h-[13px] sm:w-[13px]"
+              />
             </button>
           </div>
         ))}
 
+        {/* Empty State */}
         {history.length === 0 && (
-          <p className="py-6 text-center text-xs text-slate-600">
-            No history yet.
-          </p>
+          <div className="py-6 text-center sm:py-8">
+            <MessageSquare
+              size={18}
+              className="mx-auto mb-2 text-slate-700"
+            />
+
+            <p className="text-[11px] leading-5 text-slate-600 sm:text-xs">
+              No history yet.
+            </p>
+          </div>
         )}
       </div>
     </div>
